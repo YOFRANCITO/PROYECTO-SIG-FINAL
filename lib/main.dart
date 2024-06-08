@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:movil_system_si2/pages/materias.dart';
 
 import 'pages/horarios.dart';
 import 'pages/marcarAsist.dart';
@@ -44,7 +45,8 @@ class _MyAppState extends State<MyApp> {
         '/perfil': (context) => const PerfilPage(),
         '/marcarAsist': (context) => const MarcarAsist(),
         '/horarios': (context) => Horario(),
-        '/asistencias': (context)=>AsistenciasPage()
+        '/asistencias': (context)=>AsistenciasPage(),
+        '/materias': (context)=>MateriasPage()
         /*
         
         
