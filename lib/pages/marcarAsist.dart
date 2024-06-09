@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
+import '/pages/soliPermiso.dart';
 import '../components/appBar.dart';
 import '../components/barMenu.dart';
 
@@ -37,6 +38,21 @@ class _MarcarAsistState extends State<MarcarAsist> {
       longitud = position.longitude.toString();
       latitud = position.latitude.toString();
     });
+  }
+
+  void sendAttendance({required bool isVirtual}) {
+    // Aquí se debería enviar la asistencia al backend
+    String latitudeToSend = isVirtual ? "null" : latitud;
+    String longitudeToSend = isVirtual ? "null" : longitud;
+
+    // Simulación de envío
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Asistencia marcada: Materia: $selectedSubject, Latitud: $latitudeToSend, Longitud: $longitudeToSend',
+        ),
+      ),
+    );
   }
 
   @override
@@ -160,7 +176,7 @@ class _MarcarAsistState extends State<MarcarAsist> {
                       SizedBox(height: 20),
                       MaterialButton(
                         onPressed: () {
-                          getCurrentLocation();
+                          sendAttendance(isVirtual: false);
                         },
                         height: 50,
                         color: Colors.blue.shade900,
@@ -184,7 +200,9 @@ class _MarcarAsistState extends State<MarcarAsist> {
                         children: <Widget>[
                           Expanded(
                             child: MaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                sendAttendance(isVirtual: true);
+                              },
                               height: 50,
                               color: Colors.blue,
                               shape: RoundedRectangleBorder(
@@ -201,7 +219,12 @@ class _MarcarAsistState extends State<MarcarAsist> {
                           SizedBox(width: 10),
                           Expanded(
                             child: MaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => SolicitarPermisoPage()),
+                                );
+                              },
                               height: 50,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
@@ -225,7 +248,7 @@ class _MarcarAsistState extends State<MarcarAsist> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavBar(selectedIndex: 1,),
+      bottomNavigationBar: BottomNavBar(selectedIndex: 1),
     );
   }
 }
