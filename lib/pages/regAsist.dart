@@ -24,6 +24,11 @@ class _AsistenciasPageState extends State<AsistenciasPage> {
     '2024_febrero_semana 2': [
       Asistencia('Falta', '12-02-2024', '10:00', 'Química', 'QUI202', 'SC'),
     ],
+    '2024_junio_semana 1': [
+      Asistencia('Falta', '05-06-2024', '10:00', 'Química', 'QUI202', 'SC'),
+      Asistencia('Presencial', '03-06-2024', '08:00', 'Matemáticas', 'MAT110', 'SA'),
+      Asistencia('Virtual', '04-06-2024', '09:00', 'Física', 'FIS101', 'SB'),
+    ],
     // Agrega más asistencias para otras fechas
   };
 
