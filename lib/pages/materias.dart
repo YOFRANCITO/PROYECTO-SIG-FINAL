@@ -77,7 +77,7 @@ class _MateriasPageState extends State<MateriasPage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(selectedIndex: 1),
+      bottomNavigationBar: BottomNavBar(selectedIndex: 3),
     );
   }
 
