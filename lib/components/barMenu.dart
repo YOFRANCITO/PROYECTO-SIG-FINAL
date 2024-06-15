@@ -17,7 +17,7 @@ class BottomNavBar extends StatelessWidget {
         Navigator.pushNamed(context, '/horarios');
         break;
       case 3:
-        Navigator.pushNamed(context, '/materias');
+        Navigator.pushNamed(context, '/grupos');
         break;
       case 4:
         Navigator.pushNamed(context, '/asistencias');
