@@ -34,6 +34,7 @@ class AuthService {
     await prefs.setString('refreshToken', userData['refreshToken']);
     await prefs.setString('expirationTime', userData['expirationTime']);
     await prefs.setString('role', userData['role']);
+
   }
 }
 

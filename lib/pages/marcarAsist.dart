@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import '/pages/soliPermiso.dart';
 import '../components/appBar.dart';
 import '../components/barMenu.dart';
+import '../services/asistenciaService.dart';
 
 class MarcarAsist extends StatefulWidget {
   const MarcarAsist({super.key});
@@ -16,8 +17,8 @@ class MarcarAsist extends StatefulWidget {
 }
 
 class _MarcarAsistState extends State<MarcarAsist> {
-  static String latitud = "";
-  static String longitud = "";
+  static String latitud = "0.0";
+  static String longitud = "0.0";
   String selectedSubject = "Matemáticas"; // Valor inicial de la lista desplegable
 
   Future<Position> determinePosition() async {
@@ -40,19 +41,38 @@ class _MarcarAsistState extends State<MarcarAsist> {
     });
   }
 
-  void sendAttendance({required bool isVirtual}) {
-    // Aquí se debería enviar la asistencia al backend
-    String latitudeToSend = isVirtual ? "null" : latitud;
-    String longitudeToSend = isVirtual ? "null" : longitud;
+  void sendAttendance({required bool isVirtual}) async {
+    double latitudeToSend = isVirtual ? 1.0 : double.parse(latitud);
+    double longitudeToSend = isVirtual ? 1.0 : double.parse(longitud);
 
-    // Simulación de envío
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Asistencia marcada: Materia: $selectedSubject, Latitud: $latitudeToSend, Longitud: $longitudeToSend',
-        ),
-      ),
+    final now = DateTime.now();
+    final asistencia = Asistencia(
+      id: 1,
+      descripcion: "1",
+      hora: DateFormat('HH:mm:ss').format(now),
+      fecha: now,
+      tiempo: DateFormat('HH:mm:ss').format(now),
+      estado: "1",
+      latitud: latitudeToSend,
+      longitud: longitudeToSend,
+      grupo: Grupo(id: 1),
     );
+
+    final response = await MarcarAsistService().marcarAsistencia(asistencia);
+
+    if (response.containsKey('error')) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error al marcar asistencia: ${response['error']}'),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Asistencia marcada con éxito'),
+        ),
+      );
+    }
   }
 
   @override
@@ -251,16 +271,4 @@ class _MarcarAsistState extends State<MarcarAsist> {
       bottomNavigationBar: BottomNavBar(selectedIndex: 1),
     );
   }
-}
-
-class Materia {
-  final String nombre;
-  final String sigla;
-  final String grupo;
-  final String horario;
-  final String aula;
-  final int startHour;
-  final int endHour;
-
-  Materia(this.nombre, this.sigla, this.grupo, this.horario, this.aula, this.startHour, this.endHour);
 }
