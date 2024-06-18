@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'package:http/http.dart' as http;
 import '../utils/apiBack.dart';
 import '../models/loginModel.dart';
@@ -34,6 +35,9 @@ class AuthService {
     await prefs.setString('refreshToken', userData['refreshToken']);
     await prefs.setString('expirationTime', userData['expirationTime']);
     await prefs.setString('role', userData['role']);
+        await prefs.setString('name', userData['name']);
+
+    await prefs.setInt('id', userData['id']);
 
   }
 }
@@ -44,6 +48,9 @@ Future<Map<String, dynamic>?> getUserData() async {
   String? refreshToken = prefs.getString('refreshToken');
   String? expirationTime = prefs.getString('expirationTime');
   String? role = prefs.getString('role');
+    String? name = prefs.getString('name');
+
+  int? id = prefs.getInt('id');
 
   if (token != null && refreshToken != null && expirationTime != null && role != null) {
     return {
@@ -51,6 +58,8 @@ Future<Map<String, dynamic>?> getUserData() async {
       'refreshToken': refreshToken,
       'expirationTime': expirationTime,
       'role': role,
+      'name': role,
+      'id': id,
     };
   } else {
     return null;

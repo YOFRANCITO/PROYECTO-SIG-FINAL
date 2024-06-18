@@ -5,6 +5,9 @@ class LoginResponse {
   final String refreshToken;
   final String expirationTime;
   final String role;
+  final String name;
+  final int id;
+  
 
   LoginResponse({
     required this.statusCode,
@@ -13,6 +16,9 @@ class LoginResponse {
     required this.refreshToken,
     required this.expirationTime,
     required this.role,
+    required this.name,
+
+    required this.id,
   });
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) {
@@ -23,6 +29,8 @@ class LoginResponse {
       refreshToken: json['refreshToken'],
       expirationTime: json['expirationTime'],
       role: json['role'],
+      id: json['id'],
+       name: json['name'],
     );
   }
 }

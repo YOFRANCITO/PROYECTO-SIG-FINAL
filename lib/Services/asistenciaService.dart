@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/apiBack.dart';
 
 class Asistencia {
-  int id;
+  int? id; // Cambia a int? para hacerlo opcional
   String descripcion;
   String hora;
   DateTime fecha;
@@ -16,7 +16,7 @@ class Asistencia {
   Grupo grupo;
 
   Asistencia({
-    required this.id,
+    this.id, // Elimina el required
     required this.descripcion,
     required this.hora,
     required this.fecha,
@@ -27,9 +27,8 @@ class Asistencia {
     required this.grupo,
   });
 
-  Map<String, dynamic> toJson() {
+  Map toJson() {
     return {
-      'id': id,
       'descripcion': descripcion,
       'hora': hora,
       'fecha': fecha.toIso8601String().split('T').first,

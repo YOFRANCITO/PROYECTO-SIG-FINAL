@@ -2,11 +2,35 @@
 
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../components/appBar.dart';
 import '../components/barMenu.dart';
 
-class PerfilPage extends StatelessWidget {
+class PerfilPage extends StatefulWidget {
   const PerfilPage({super.key});
+
+  @override
+  _PerfilPageState createState() => _PerfilPageState();
+}
+
+class _PerfilPageState extends State<PerfilPage> {
+  late String _name='';
+  late String _role='';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  // Cargar datos del usuario desde las preferencias compartidas
+  void _loadUserData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _name = prefs.getString('name') ?? 'Nombre Desconocido';
+      _role = prefs.getString('role') ?? 'Rol Desconocido';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +101,7 @@ class PerfilPage extends StatelessWidget {
                         FadeInDown(
                           duration: Duration(milliseconds: 1500),
                           child: Text(
-                            "Juan Pérez",
+                            _name,
                             style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.bold,
@@ -88,7 +112,7 @@ class PerfilPage extends StatelessWidget {
                         FadeInDown(
                           duration: Duration(milliseconds: 1600),
                           child: Text(
-                            "juan.perez@example.com",
+                            _role,
                             style: TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -115,7 +139,7 @@ class PerfilPage extends StatelessWidget {
                                 ListTile(
                                   leading: Icon(Icons.code, color: Colors.blue.shade900),
                                   title: Text(
-                                    "Código de docente: 12345",
+                                    "Código de docente: 123",
                                     style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                 ),
@@ -123,7 +147,7 @@ class PerfilPage extends StatelessWidget {
                                 ListTile(
                                   leading: Icon(Icons.badge, color: Colors.blue.shade900),
                                   title: Text(
-                                    "CI: 9876543210",
+                                    "CI: 1414258",
                                     style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                 ),
@@ -139,7 +163,7 @@ class PerfilPage extends StatelessWidget {
                                 ListTile(
                                   leading: Icon(Icons.home, color: Colors.blue.shade900),
                                   title: Text(
-                                    "Calle Falsa 123, Springfield",
+                                    "los lotes",
                                     style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                 ),
