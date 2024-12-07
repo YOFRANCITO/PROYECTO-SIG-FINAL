@@ -293,7 +293,7 @@ class _MarcarAsistState extends State<MarcarAsist> {
                                   return DropdownMenuItem<int>(
                                     value: grupo.id,
                                     child: Text(
-                                      'Aula: ${grupo.horarios.first.aulaNombre} | Grupo: ${grupo.nombre} | Materia: ${grupo.materiaNombre} | ${grupo.horarios.first.dia}- ${grupo.horarios.isNotEmpty ? "${grupo.horarios.first.horainicio} - ${grupo.horarios.first.horafin}" : "Horario no disponible"}',
+                                      'Aula: ${grupo.horarios.first.aulaNombre } | Grupo: ${grupo.nombre} | Materia: ${grupo.materiaNombre} | ${grupo.horarios.first.dia}- ${grupo.horarios.isNotEmpty ? "${grupo.horarios.first.horainicio} - ${grupo.horarios.first.horafin}" : "Horario no disponible"}',
                                     ),
                                   );
                                 }).toList(),

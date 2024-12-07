@@ -1,0 +1,4 @@
+#Sun Jun 16 15:43:42 BOT 2024
+base.0=D\:\\EXAMENSI2\\MOVIL\\movil_system_si2\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

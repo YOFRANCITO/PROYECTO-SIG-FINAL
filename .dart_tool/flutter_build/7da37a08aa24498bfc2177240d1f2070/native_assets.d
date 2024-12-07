@@ -1,0 +1,1 @@
+ D:\\EXAMENSI2\\MOVIL\\movil_system_si2\\.dart_tool\\flutter_build\\7da37a08aa24498bfc2177240d1f2070\\native_assets.yaml: 
