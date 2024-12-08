@@ -10,16 +10,16 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _loginController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final AuthService _authService = AuthService();
   bool _isLoading = false;
 
   void _login() async {
-    final email = _emailController.text;
+    final login = _loginController.text;
     final password = _passwordController.text;
 
-    if (email.isEmpty || password.isEmpty) {
+    if (login.isEmpty || password.isEmpty) {
       _showSnackbar('Por favor complete todos los campos');
       return;
     }
@@ -29,22 +29,22 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     try {
-      final response = await _authService.login(email, password);
+      final bool isSuccess = await _authService.login(login, password);
+
       setState(() {
         _isLoading = false;
       });
 
-      if (response.statusCode == 200) {
-        // Navegar a la pantalla de perfil si el login es exitoso
+      if (isSuccess) {
         Navigator.pushNamed(context, '/perfil');
       } else {
-        _showSnackbar('Login fallido: ${response.message}');
+        _showSnackbar('Credenciales inválidas');
       }
     } catch (e) {
       setState(() {
         _isLoading = false;
       });
-      _showSnackbar('Login fallido: $e');
+      _showSnackbar('Error al iniciar sesión: $e');
     }
   }
 
@@ -74,7 +74,18 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 100),
+              SizedBox(height: 80), // Reduce el espacio aquí para mover el logo más arriba
+
+              // Logo de la aplicación
+              FadeInDown(
+                duration: Duration(milliseconds: 800),
+                child: Image.asset(
+                  'assets/images/logo.png', // Reemplaza con la ruta de tu logo
+                  width: 150, // Ajusta el tamaño según lo necesites
+                  height: 150,
+                ),
+              ),
+
               Padding(
                 padding: EdgeInsets.all(20),
                 child: Column(
@@ -98,85 +109,78 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 50),
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 10,
-                      offset: Offset(0, 10),
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      FadeInDown(
-                        duration: Duration(milliseconds: 1400),
-                        child: TextField(
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            labelText: "Correo Electrónico",
-                            labelStyle: TextStyle(color: Colors.grey),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      FadeInDown(
-                        duration: Duration(milliseconds: 1500),
-                        child: TextField(
-                          controller: _passwordController,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            labelText: "Contraseña",
-                            labelStyle: TextStyle(color: Colors.grey),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      FadeInDown(
-                        duration: Duration(milliseconds: 1600),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "¿Olvidaste tu contraseña?",
-                            style: TextStyle(color: Colors.blue),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      FadeInDown(
-                        duration: Duration(milliseconds: 1700),
-                        child: MaterialButton(
-                          onPressed: _isLoading ? null : _login,
-                          height: 50,
-                          color: Colors.blue[900],
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: _isLoading
-                                ? CircularProgressIndicator(color: Colors.white)
-                                : Text(
-                                    "Iniciar Sesión",
-                                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                                  ),
-                          ),
-                        ),
+              SizedBox(height: 20),
+              Expanded(
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 10,
+                        offset: Offset(0, 10),
                       ),
                     ],
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        FadeInDown(
+                          duration: Duration(milliseconds: 1400),
+                          child: TextField(
+                            controller: _loginController,
+                            decoration: InputDecoration(
+                              labelText: "Usuario",
+                              labelStyle: TextStyle(color: Colors.grey),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        FadeInDown(
+                          duration: Duration(milliseconds: 1500),
+                          child: TextField(
+                            controller: _passwordController,
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              labelText: "Contraseña",
+                              labelStyle: TextStyle(color: Colors.grey),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        FadeInDown(
+                          duration: Duration(milliseconds: 1700),
+                          child: MaterialButton(
+                            onPressed: _isLoading ? null : _login,
+                            height: 50,
+                            color: Colors.blue[900],
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Center(
+                              child: _isLoading
+                                  ? CircularProgressIndicator(color: Colors.white)
+                                  : Text(
+                                      "Iniciar Sesión",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

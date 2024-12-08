@@ -1,5 +1,4 @@
-// ignore_for_file: prefer_const_constructors
-
+import 'dart:convert';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,8 +13,10 @@ class PerfilPage extends StatefulWidget {
 }
 
 class _PerfilPageState extends State<PerfilPage> {
-  late String _name='';
-  late String _role='';
+  late String _name = '';
+  late String _role = '';
+  late String login = ''; // Variable para almacenar el login
+  late String password = ''; // Variable para almacenar la contraseña
 
   @override
   void initState() {
@@ -29,7 +30,13 @@ class _PerfilPageState extends State<PerfilPage> {
     setState(() {
       _name = prefs.getString('name') ?? 'Nombre Desconocido';
       _role = prefs.getString('role') ?? 'Rol Desconocido';
+      login = prefs.getString('login') ?? 'Login Desconocido'; // Recuperar el login
+      password = prefs.getString('password') ?? 'Contraseña Desconocida'; // Recuperar la contraseña
     });
+
+    // Agregar depuración para verificar si los datos se han cargado correctamente
+    print('Login: $login');
+    print('Password: $password');
   }
 
   @override
@@ -137,23 +144,26 @@ class _PerfilPageState extends State<PerfilPage> {
                             child: Column(
                               children: <Widget>[
                                 ListTile(
-                                  leading: Icon(Icons.code, color: Colors.blue.shade900),
+                                  leading: Icon(Icons.code,
+                                      color: Colors.blue.shade900),
                                   title: Text(
-                                    "Código de docente: 123",
+                                    "Login: $login",
                                     style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                 ),
                                 Divider(),
                                 ListTile(
-                                  leading: Icon(Icons.badge, color: Colors.blue.shade900),
+                                  leading: Icon(Icons.badge,
+                                      color: Colors.blue.shade900),
                                   title: Text(
-                                    "CI: 1414258",
+                                    "Contraseña: $password",
                                     style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                 ),
                                 Divider(),
                                 ListTile(
-                                  leading: Icon(Icons.phone, color: Colors.blue.shade900),
+                                  leading: Icon(Icons.phone,
+                                      color: Colors.blue.shade900),
                                   title: Text(
                                     "+1 234 567 890",
                                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -161,7 +171,8 @@ class _PerfilPageState extends State<PerfilPage> {
                                 ),
                                 Divider(),
                                 ListTile(
-                                  leading: Icon(Icons.home, color: Colors.blue.shade900),
+                                  leading: Icon(Icons.home,
+                                      color: Colors.blue.shade900),
                                   title: Text(
                                     "los lotes",
                                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -184,7 +195,8 @@ class _PerfilPageState extends State<PerfilPage> {
                         backgroundColor: Colors.white, // Borde blanco grueso
                         child: CircleAvatar(
                           radius: 50,
-                          backgroundImage: NetworkImage('https://via.placeholder.com/150'), // Reemplazar con imagen real
+                          backgroundImage: NetworkImage(
+                              'https://via.placeholder.com/150'), // Reemplazar con imagen real
                         ),
                       ),
                     ),

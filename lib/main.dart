@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:movil_system_si2/pages/grupos.dart';
-import 'package:movil_system_si2/pages/materias.dart';
+import 'package:movil_system_si2/pages/lectura.dart';
+import 'package:movil_system_si2/pages/reconexion.dart';
 
-import 'pages/horarios.dart';
-import 'pages/marcarAsist.dart';
 import 'pages/login.dart';
 import 'pages/perfil.dart';
-import 'pages/regAsist.dart';
+import 'pages/MenuCortes.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -44,11 +42,9 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (context) => const LoginPage(),
         '/perfil': (context) => const PerfilPage(),
-        '/marcarAsist': (context) => const MarcarAsist(),
-        '/horarios': (context) => Horario(),
-        '/asistencias': (context)=>AsistenciasPage(),
-        '/materias': (context)=>MateriasPage(),
-        '/grupos': (context)=>GruposPage()
+        '/lectura': (context)=>LecturaPage(),
+        '/reconexion': (context)=>ReconexionPage(),
+        '/MenuCortes': (context)=>MenuCortesPage()
         /*
         
         
