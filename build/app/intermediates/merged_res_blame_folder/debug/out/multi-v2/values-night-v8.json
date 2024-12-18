@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.movil_system_si2.app-mergeDebugResources-11:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.movil_system_si2.app-mergeDebugResources-13:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "D:\\EXAMENSI2\\MOVIL\\movil_system_si2\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "D:\\SIG 2024\\movil_system_si2\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:movil_system_si2/pages/MenuCortespages/VerRutasBD.dart';
+import 'package:movil_system_si2/pages/MenuCortespages/listaCorteRealizado.dart';
 import '../components/appBar.dart';
 import '../components/barMenu.dart';
 import 'MenuCortespages/corte.dart';
 import 'MenuCortespages/registroruta.dart';
+
+
 
 class MenuCortesPage extends StatefulWidget {
   const MenuCortesPage({super.key});
@@ -45,7 +49,7 @@ class _MenuCortesPageState extends State<MenuCortesPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>  RegistroRutas(),
+                    builder: (context) =>  RutasMapa(),
                   ),
                 );
               },
@@ -58,13 +62,18 @@ class _MenuCortesPageState extends State<MenuCortesPage> {
                 padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 40),
               ),
             ),
-            const SizedBox(height: 10),
+             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
-                // Lógica para exportar cortes al servidor
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>  VerRutasBD(),
+                  ),
+                );
               },
               child: const Text(
-                "Exportar cortes al servidor",
+                "Exportar Cortes al servidor",
                 style: TextStyle(color: Colors.black), // Color del texto negro
               ),
               style: ElevatedButton.styleFrom(
@@ -72,10 +81,16 @@ class _MenuCortesPageState extends State<MenuCortesPage> {
                 padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 40),
               ),
             ),
+           
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
-                // Lógica para mostrar la lista de cortes realizados
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>  ListaCortePages(),
+                  ),
+                );
               },
               child: const Text(
                 "Lista de cortes realizados",

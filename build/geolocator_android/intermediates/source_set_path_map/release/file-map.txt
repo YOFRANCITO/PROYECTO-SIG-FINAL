@@ -1,14 +1,14 @@
-com.baseflow.geolocator.geolocator_android-core-1.6.0-0 C:\Users\pc\.gradle\caches\transforms-3\200a576eda084a09550ebc2ea22cb4a5\transformed\core-1.6.0\res
-com.baseflow.geolocator.geolocator_android-jetified-annotation-experimental-1.1.0-1 C:\Users\pc\.gradle\caches\transforms-3\25d10a17dc8ad1a5b3e7a462dcbe183e\transformed\jetified-annotation-experimental-1.1.0\res
-com.baseflow.geolocator.geolocator_android-jetified-window-java-1.0.0-beta04-2 C:\Users\pc\.gradle\caches\transforms-3\4b3a5ba95f21a06952d568097b3e5266\transformed\jetified-window-java-1.0.0-beta04\res
-com.baseflow.geolocator.geolocator_android-jetified-window-1.0.0-beta04-3 C:\Users\pc\.gradle\caches\transforms-3\4b5a18471ec833030c46d3531975dc92\transformed\jetified-window-1.0.0-beta04\res
-com.baseflow.geolocator.geolocator_android-jetified-play-services-basement-17.0.0-4 C:\Users\pc\.gradle\caches\transforms-3\6e14f9eaa8d1722292944068c9e17379\transformed\jetified-play-services-basement-17.0.0\res
-com.baseflow.geolocator.geolocator_android-jetified-play-services-base-17.0.0-5 C:\Users\pc\.gradle\caches\transforms-3\cfe8e4cf894b057843ab2f22bb3beb73\transformed\jetified-play-services-base-17.0.0\res
+com.baseflow.geolocator.geolocator_android-jetified-window-1.0.0-beta04-0 C:\Users\pc\.gradle\caches\transforms-3\032f4dff274e516110d9363a9793a3e3\transformed\jetified-window-1.0.0-beta04\res
+com.baseflow.geolocator.geolocator_android-jetified-window-java-1.0.0-beta04-1 C:\Users\pc\.gradle\caches\transforms-3\142c24f2530665bb6deb4123ab140714\transformed\jetified-window-java-1.0.0-beta04\res
+com.baseflow.geolocator.geolocator_android-core-1.6.0-2 C:\Users\pc\.gradle\caches\transforms-3\2579a7de00054bf46a8dbc332552f622\transformed\core-1.6.0\res
+com.baseflow.geolocator.geolocator_android-jetified-annotation-experimental-1.1.0-3 C:\Users\pc\.gradle\caches\transforms-3\3f96ca76068ab400b494bc7d541ee256\transformed\jetified-annotation-experimental-1.1.0\res
+com.baseflow.geolocator.geolocator_android-jetified-play-services-basement-17.0.0-4 C:\Users\pc\.gradle\caches\transforms-3\4cc01dec4d6903abcdb6ce2a21a6ba6c\transformed\jetified-play-services-basement-17.0.0\res
+com.baseflow.geolocator.geolocator_android-jetified-play-services-base-17.0.0-5 C:\Users\pc\.gradle\caches\transforms-3\c3f4174846aa9ec77168fb7890586a25\transformed\jetified-play-services-base-17.0.0\res
 com.baseflow.geolocator.geolocator_android-main-6 C:\Users\pc\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-3.2.1\android\src\main\res
 com.baseflow.geolocator.geolocator_android-release-7 C:\Users\pc\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-3.2.1\android\src\release\res
-com.baseflow.geolocator.geolocator_android-pngs-8 D:\EXAMENSI2\MOVIL\movil_system_si2\build\geolocator_android\generated\res\pngs\release
-com.baseflow.geolocator.geolocator_android-resValues-9 D:\EXAMENSI2\MOVIL\movil_system_si2\build\geolocator_android\generated\res\resValues\release
-com.baseflow.geolocator.geolocator_android-rs-10 D:\EXAMENSI2\MOVIL\movil_system_si2\build\geolocator_android\generated\res\rs\release
-com.baseflow.geolocator.geolocator_android-mergeReleaseResources-11 D:\EXAMENSI2\MOVIL\movil_system_si2\build\geolocator_android\intermediates\incremental\release\mergeReleaseResources\merged.dir
-com.baseflow.geolocator.geolocator_android-mergeReleaseResources-12 D:\EXAMENSI2\MOVIL\movil_system_si2\build\geolocator_android\intermediates\incremental\release\mergeReleaseResources\stripped.dir
-com.baseflow.geolocator.geolocator_android-merged_res-13 D:\EXAMENSI2\MOVIL\movil_system_si2\build\geolocator_android\intermediates\merged_res\release
+com.baseflow.geolocator.geolocator_android-pngs-8 D:\SIG 2024\movil_system_si2\build\geolocator_android\generated\res\pngs\release
+com.baseflow.geolocator.geolocator_android-resValues-9 D:\SIG 2024\movil_system_si2\build\geolocator_android\generated\res\resValues\release
+com.baseflow.geolocator.geolocator_android-rs-10 D:\SIG 2024\movil_system_si2\build\geolocator_android\generated\res\rs\release
+com.baseflow.geolocator.geolocator_android-mergeReleaseResources-11 D:\SIG 2024\movil_system_si2\build\geolocator_android\intermediates\incremental\release\mergeReleaseResources\merged.dir
+com.baseflow.geolocator.geolocator_android-mergeReleaseResources-12 D:\SIG 2024\movil_system_si2\build\geolocator_android\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+com.baseflow.geolocator.geolocator_android-merged_res-13 D:\SIG 2024\movil_system_si2\build\geolocator_android\intermediates\merged_res\release

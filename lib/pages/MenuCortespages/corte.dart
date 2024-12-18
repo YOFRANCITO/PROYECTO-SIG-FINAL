@@ -25,25 +25,26 @@ class _CortesPageState extends State<CortesPage> {
   Future<void> _sendData() async {
     final url = "http://190.171.244.211:8080/wsVarios/wsBS.asmx";
 
-    // Determinar el valor para `liCper`
-    final codigoFijo = int.tryParse(_codigoFijoController.text.trim());
-    final liCper = _selectedRoute == "TODAS LAS RUTAS" ? 0 : (codigoFijo ?? 0);
-
-    if (liCper == null || liCper == 0 && _selectedRoute == "Seleccionar...") {
+    // Validar el valor del input
+    final codigoFijoText = _codigoFijoController.text.trim();
+    if (codigoFijoText.isEmpty && _selectedRoute != "TODAS LAS RUTAS") {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Por favor, selecciona una ruta o ingresa un código válido.")),
+        SnackBar(content: Text("Por favor, ingresa un código fijo válido.")),
       );
       return;
     }
 
+    final codigoFijo = int.tryParse(codigoFijoText) ?? 0;
+    final liCper = _selectedRoute == "TODAS LAS RUTAS" ? 0 : codigoFijo;
+
     final soapEnvelope = '''<?xml version="1.0" encoding="utf-8"?>
-      <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-        <soap:Body>
-          <W0Corte_ObtenerRutas xmlns="http://activebs.net/">
-            <liCper>$liCper</liCper>
-          </W0Corte_ObtenerRutas>
-        </soap:Body>
-      </soap:Envelope>''';
+    <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <soap:Body>
+        <W0Corte_ObtenerRutas xmlns="http://activebs.net/">
+          <liCper>$liCper</liCper>
+        </W0Corte_ObtenerRutas>
+      </soap:Body>
+    </soap:Envelope>''';
 
     try {
       final response = await http.post(
@@ -55,11 +56,8 @@ class _CortesPageState extends State<CortesPage> {
         body: soapEnvelope,
       );
 
-      setState(() {
-        _serverResponse = response.body;
-      });
-
       if (response.statusCode == 200) {
+        print("Respuesta completa del servidor: ${response.body}");
         _parseSoapResponse(response.body);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -68,7 +66,7 @@ class _CortesPageState extends State<CortesPage> {
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Error al conectar con el servidor.")),
+        SnackBar(content: Text("Error al conectar con el servidor: $e")),
       );
     }
   }
@@ -76,6 +74,8 @@ class _CortesPageState extends State<CortesPage> {
   void _parseSoapResponse(String response) {
     final startTag = "<diffgr:diffgram";
     final endTag = "</diffgr:diffgram>";
+
+    print("Respuesta para procesar: $response");
 
     if (!response.contains(startTag) || !response.contains(endTag)) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -92,11 +92,18 @@ class _CortesPageState extends State<CortesPage> {
     try {
       final document = XmlDocument.parse(rawXml);
       final tables = document.findAllElements('Table');
+
+      if (tables.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("No se encontraron tablas en la respuesta.")),
+        );
+        return;
+      }
+
       List<Map<String, String>> parsedData = [];
       List<String> routes = [];
 
       for (var table in tables) {
-        // Extrae datos relevantes
         final bsrutnrut = table.getElement('bsrutnrut')?.text ?? "N/A";
         final dNomb = table.getElement('dNomb')?.text?.trim() ?? "N/A";
         final bsrutdesc = table.getElement('bsrutdesc')?.text?.trim() ?? "N/A";
@@ -121,7 +128,6 @@ class _CortesPageState extends State<CortesPage> {
       setState(() {
         _tablesData = parsedData;
 
-        // Actualiza el menú desplegable si es "TODAS LAS RUTAS"
         if (_selectedRoute == "TODAS LAS RUTAS") {
           _routes = ["Seleccionar...", "TODAS LAS RUTAS", ...routes];
         }
@@ -132,7 +138,7 @@ class _CortesPageState extends State<CortesPage> {
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Error al procesar datos del servidor.")),
+        SnackBar(content: Text("Error al procesar datos del servidor: $e")),
       );
     }
   }
@@ -175,34 +181,27 @@ class _CortesPageState extends State<CortesPage> {
                 border: OutlineInputBorder(),
               ),
             ),
-          
-
-
-
-   SizedBox(height: 20),
+            SizedBox(height: 20),
             Row(
               children: [
                 ElevatedButton(
-                   onPressed: _sendData,
-              child: Text("Cargar Rutas"),
+                  onPressed: _sendData,
+                  child: Text("Cargar Rutas"),
                 ),
                 SizedBox(width: 20),
                 ElevatedButton(
-                onPressed: () {
-                // Navegar a la sección de "Importar cortes" dentro de AsistenciasPage
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ImportarCortesPage(),
-                  ),
-                );
-              },
-              child: Text("Importar Cortes"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ImportarCortesPage(),
+                      ),
+                    );
+                  },
+                  child: Text("Importar Cortes"),
                 ),
               ],
             ),
-
-            
             SizedBox(height: 20),
             Expanded(
               child: ListView.builder(

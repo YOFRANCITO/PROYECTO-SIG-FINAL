@@ -4,7 +4,7 @@
             "outputFile": "com.baseflow.geolocator.geolocator_android-merged_res-12:/values-sr/values-sr.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\200a576eda084a09550ebc2ea22cb4a5\\transformed\\core-1.6.0\\res\\values-sr\\values-sr.xml",
+                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\2579a7de00054bf46a8dbc332552f622\\transformed\\core-1.6.0\\res\\values-sr\\values-sr.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\6e14f9eaa8d1722292944068c9e17379\\transformed\\jetified-play-services-basement-17.0.0\\res\\values-sr\\values.xml",
+                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\4cc01dec4d6903abcdb6ce2a21a6ba6c\\transformed\\jetified-play-services-basement-17.0.0\\res\\values-sr\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\cfe8e4cf894b057843ab2f22bb3beb73\\transformed\\jetified-play-services-base-17.0.0\\res\\values-sr\\values.xml",
+                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\c3f4174846aa9ec77168fb7890586a25\\transformed\\jetified-play-services-base-17.0.0\\res\\values-sr\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -60,7 +60,7 @@
             "outputFile": "com.baseflow.geolocator.geolocator_android-mergeReleaseResources-10:/values-sr/values-sr.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\200a576eda084a09550ebc2ea22cb4a5\\transformed\\core-1.6.0\\res\\values-sr\\values-sr.xml",
+                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\2579a7de00054bf46a8dbc332552f622\\transformed\\core-1.6.0\\res\\values-sr\\values-sr.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -77,7 +77,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\6e14f9eaa8d1722292944068c9e17379\\transformed\\jetified-play-services-basement-17.0.0\\res\\values-sr\\values.xml",
+                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\4cc01dec4d6903abcdb6ce2a21a6ba6c\\transformed\\jetified-play-services-basement-17.0.0\\res\\values-sr\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -94,7 +94,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\cfe8e4cf894b057843ab2f22bb3beb73\\transformed\\jetified-play-services-base-17.0.0\\res\\values-sr\\values.xml",
+                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\c3f4174846aa9ec77168fb7890586a25\\transformed\\jetified-play-services-base-17.0.0\\res\\values-sr\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",

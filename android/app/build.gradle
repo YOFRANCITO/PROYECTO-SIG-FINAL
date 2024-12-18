@@ -45,7 +45,9 @@ android {
         applicationId "com.example.movil_system_si2"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+       // minSdkVersion flutter.minSdkVersion
+            minSdkVersion 20 // Aumentar el minSdkVersion
+
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -53,8 +55,10 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            shrinkResources true
+        minifyEnabled true
+        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+   
             signingConfig signingConfigs.debug
         }
     }
